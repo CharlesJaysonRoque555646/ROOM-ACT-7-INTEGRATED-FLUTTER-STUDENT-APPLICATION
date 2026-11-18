@@ -77,7 +77,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 decoration: InputDecoration(
                   labelText: 'Password',
                   border: const OutlineInputBorder(),
-                  helperText: 'At least 8 characters',
+                  helperText: 'At least 6 characters',
                   suffixIcon: IconButton(
                     tooltip: hidePassword ? 'Show password' : 'Hide password',
                     icon: Icon(
@@ -91,7 +91,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   if (value == null || value.trim().isEmpty) {
                     return 'Enter a password.';
                   }
-                  if (value.length < 8) return 'Use at least 8 characters.';
+                  if (value.length < 6) return 'Use at least 6 characters.';
                   return null;
                 },
               ),

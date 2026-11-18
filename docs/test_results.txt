@@ -1,0 +1,16 @@
+PASS: (setUpAll)
+PASS: 01 admin login opens MainScreen and stores session
+PASS: 02 feed shows the two sample posts
+PASS: 03 empty post fields show validation
+PASS: 04 invalid URL shows validation
+PASS: 05 valid post is first and uses logged-in username
+PASS: 06 like toggles on and off
+PASS: 07 nonempty comment appears and increments count
+PASS: 08 whitespace-only comment is ignored
+PASS: 09 sample interactions stay attached after prepending a post
+PASS: 10 posts likes and comments survive tab switching
+PASS: 11 logout clears stack and new account authors new posts
+PASS: 12 registration validation and password visibility
+PASS: failed login and registration do not authenticate; admin remains valid
+PASS: (tearDownAll)
+RESULT: 15 passed, 0 failed (includes suite setup/teardown).
