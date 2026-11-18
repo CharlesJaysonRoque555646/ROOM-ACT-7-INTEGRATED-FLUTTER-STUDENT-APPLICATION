@@ -51,7 +51,7 @@ Future<void> login(
 }
 
 Future<void> openFeed(WidgetTester tester) async {
-  await tester.tap(find.byType(NavigationDestination).at(3));
+  await tester.tap(find.byType(NavigationDestination).at(2));
   await tester.pumpAndSettle();
 }
 
@@ -309,7 +309,9 @@ void main() {
   ) async {
     await startApp(tester);
     await login(tester);
-    await tester.tap(find.byTooltip('Logout'));
+    await tester.tap(find.byType(NavigationDestination).at(3));
+    await tester.pumpAndSettle();
+    await tester.tap(find.widgetWithText(ElevatedButton, 'Logout'));
     await tester.pumpAndSettle();
     expect(DemoAuth.currentUsername, isNull);
     expect(find.byType(LoginScreen), findsOneWidget);

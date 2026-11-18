@@ -1,19 +1,35 @@
 import 'package:flutter/material.dart';
 
+import 'demo_auth.dart';
+import 'login_screen.dart';
+
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+  final String username;
+
+  const ProfilePage({super.key, required this.username});
+
+  void logout(BuildContext context) {
+    DemoAuth.logout();
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(builder: (_) => const LoginScreen()),
+      (route) => false,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('My Profile')),
-      body: const Content(),
+      appBar: AppBar(title: const Text('Student Profile')),
+      body: Content(username: username, onLogout: () => logout(context)),
     );
   }
 }
 
 class Content extends StatelessWidget {
-  const Content({super.key});
+  final String username;
+  final VoidCallback onLogout;
+
+  const Content({super.key, required this.username, required this.onLogout});
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +63,9 @@ class Content extends StatelessWidget {
 
           const Text('BSIT', style: TextStyle(fontSize: 20)),
 
+          const SizedBox(height: 8),
+          Text('Logged in as: $username', textAlign: TextAlign.center),
+
           const SizedBox(height: 5),
 
           const Text('Student No. 555646', style: TextStyle(fontSize: 18)),
@@ -76,6 +95,12 @@ class Content extends StatelessWidget {
             ),
           ),
 
+          const SizedBox(height: 24),
+          ElevatedButton.icon(
+            onPressed: onLogout,
+            icon: const Icon(Icons.logout),
+            label: const Text('Logout'),
+          ),
           const SizedBox(height: 20),
 
           Card(
