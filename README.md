@@ -6,6 +6,26 @@ The app contains four destinations in order: Dashboard, Calculator, Social, Prof
 Login and registration use DemoAuth with one account stored in memory.
 Default login: admin / admin123.
 
+## Firebase setup activity
+
+Run `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\setup_firebase.ps1`
+from this project folder in your normal VS Code terminal. Complete Google sign-in
+and choose your Firebase project when prompted. The script installs the CLIs,
+adds Firebase Core, configures Web, initializes Firebase before app startup,
+and starts Chrome. It keeps the existing DemoAuth login and navigation.
+
+Firebase setup is complete for Web using project `roque-student-app-555646`.
+FlutterFire generated `lib/firebase_options.dart`, and `main.dart` initializes
+Firebase before app startup. The missing `flutter_web_plugins` SDK dependency
+was added, dependency resolution and analysis passed, and the student confirmed
+that Chrome launch and the application checks work.
+See `docs/Firebase_Setup_Activity.md` for the setup details, completed
+verification table, screenshot checklist, and five guide-question answers.
+The completed report is in `docs/Roque_Firebase_Setup.pdf`, with five labeled
+spaces for screenshots. Open `docs/Roque_Firebase_Setup.html` to add screenshots
+and print the filled report as a PDF. The editable text is also available in
+`docs/Firebase_Setup_Activity.md`.
+
 The calculator comes from Laboratory Activity 4. The profile uses the student's
 actual information from the existing student_profile activity.
 MainScreen uses setState and IndexedStack to preserve page state between tabs.
@@ -34,9 +54,12 @@ the session and navigation stack. All data is in memory and resets on restart.
 flutter test
 ```
 
-The 28 automated tests cover all 14 current activity scenarios, calculator
-operations/validation/Clear, and the previous feed, authentication, validation,
-and password-visibility checks. To capture the report screens:
+The 36 automated tests cover all 14 integration scenarios, calculator
+operations/validation/Clear, feed interactions, authentication, validation,
+password controls, keyboard login, canceled posts, image fallback, and phone
+and desktop layouts. All 36 passed on 24 November 2026. The fresh results are
+recorded in `docs/firebase_functionality_test_results.txt`.
+To capture the earlier activity report screens:
 
 ```powershell
 flutter test --dart-define=SAVE_SCREENSHOTS=true
@@ -52,8 +75,9 @@ because the test harness blocks HTTP. Live image loading and the Android/browser
 demonstration still need a manual check. `docs/integration_test_results.txt` records the
 passing test output. Tests were run directly in the Flutter test engine because
 this environment blocked the standard test runner's local socket.
-The web release build was attempted but blocked by a sandbox restriction on
-the SDK telemetry cache; a successful browser build is not claimed.
+The Web release build also passed on 24 November 2026. Chrome startup was
+separately confirmed by the student. Successful live image downloads are not
+covered by the widget tests; the unavailable-image fallback is verified.
 
 The existing repository is
 https://github.com/CharlesJaysonRoque555646/ROOM-ACT-7-INTEGRATED-FLUTTER-STUDENT-APPLICATION.

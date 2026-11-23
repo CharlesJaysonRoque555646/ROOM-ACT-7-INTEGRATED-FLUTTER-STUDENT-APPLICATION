@@ -33,6 +33,9 @@ migrate_working_dir/
 /build/
 /coverage/
 
+# Portable Node runtime used by the Firebase setup on affected Windows systems.
+/.firebase-tools-runtime/
+
 # Symbolication related
 app.*.symbols
 
