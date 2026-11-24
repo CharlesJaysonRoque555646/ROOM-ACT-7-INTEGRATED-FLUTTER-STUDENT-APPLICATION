@@ -1,1 +1,1 @@
-{"flutter":{"platforms":{"dart":{"lib/firebase_options.dart":{"projectId":"roque-student-app-555646","configurations":{"web":"1:735669725582:web:7637530e5812de8fc25cdf"}}}}}}
+{"flutter":{"platforms":{"dart":{"lib/firebase_options.dart":{"projectId":"roque-student-app-555646","configurations":{"web":"1:735669725582:web:7637530e5812de8fc25cdf"}}}}},"firestore":{"rules":"firestore.rules"}}

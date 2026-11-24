@@ -6,6 +6,29 @@ The app contains four destinations in order: Dashboard, Calculator, Social, Prof
 Login and registration use DemoAuth with one account stored in memory.
 Default login: admin / admin123.
 
+## Laboratory Activity 9
+
+Dashboard now opens **Manage Student Records**. The module uses anonymous
+Firebase Authentication and Cloud Firestore at
+`users/{uid}/students/{documentId}`. Records have only `name` and `course`.
+It supports live records, creation, editing by document ID, confirmed deletion,
+required fields, an 80-character limit, and database error messages.
+
+Enable Anonymous sign-in, create the default Firestore database, and publish
+`firestore.rules` in the existing Firebase project before launching the app.
+See [the setup and screenshot instructions](docs/LAB9_SETUP.md).
+Run `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\setup_lab9.ps1`
+in your normal VS Code terminal to configure Web and launch Chrome.
+
+The plain editable report is `docs/ROQUE_LAB9.docx`. Add the seven required
+screenshots and actual live test results, then export it from Google Docs as
+`ROQUE_LAB9.PDF`. The local automated CRUD tests use an isolated collection;
+they do not establish that live Firebase services or rules are configured.
+All 50 application/widget tests passed on 24 November 2026, including the
+14 new CRUD tests. Static analysis found no issues and the Web release build
+passed. Results are in `docs/lab9_test_results.txt`,
+`docs/lab9_analysis_results.txt`, and `docs/lab9_web_build_results.txt`.
+
 ## Firebase setup activity
 
 Run `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\setup_firebase.ps1`
@@ -46,7 +69,9 @@ correct interactions after inserting a post or scrolling.
 Registration requires a username of at least three characters and a password
 of at least six characters; admin is reserved and confirmation must match.
 Eye icons toggle password visibility. Logout is in Profile and clears
-the session and navigation stack. All data is in memory and resets on restart.
+the DemoAuth session and navigation stack. DemoAuth accounts and Social posts
+are in memory and reset on restart. Student Records are stored in Firestore
+under the anonymous Firebase UID; DemoAuth logout preserves that Firebase session.
 
 ## Tests and report
 
